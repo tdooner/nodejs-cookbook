@@ -28,6 +28,7 @@ bash "install npm - package manager for node" do
   cwd "/usr/local/src"
   user "root"
   code <<-EOH
+    PATH=#{node['nodejs']['dir']}/bin:$PATH
     mkdir -p npm-v#{node['nodejs']['npm']} && \
     cd npm-v#{node['nodejs']['npm']}
     curl -L #{npm_src_url} | tar xzf - --strip-components=1 && \
